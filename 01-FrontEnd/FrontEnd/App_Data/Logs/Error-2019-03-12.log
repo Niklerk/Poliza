@@ -1,0 +1,24 @@
+[ERROR] 16:34:28.429:
+- Service.PolizaService.GetAllByUser (Line #53)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 
+[ERROR] 16:35:16.461:
+- Service.PolizaService.InsertOrUpdate (Line #139)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 
+[ERROR] 16:35:31.493:
+- Service.PolizaService.InsertOrUpdate (Line #139)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 
+[ERROR] 16:35:46.425:
+- Service.PolizaService.InsertOrUpdate (Line #139)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 
+[ERROR] 16:37:38.090:
+- Service.PolizaService.InsertOrUpdate (Line #139)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 
+[ERROR] 16:38:31.089:
+- Service.PolizaService.InsertOrUpdate (Line #139)
+- The model backing the 'ApplicationDbContext' context has changed since the database was created. Consider using Code First Migrations to update the database (http://go.microsoft.com/fwlink/?LinkId=238269).
+ 

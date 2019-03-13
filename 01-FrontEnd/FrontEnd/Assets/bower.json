@@ -1,0 +1,17 @@
+{
+  "name": "Prueba poliza",
+  "authors": [
+    "Elkin Cardoso"
+  ],
+  "description": "Resource for client side",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://localhost",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

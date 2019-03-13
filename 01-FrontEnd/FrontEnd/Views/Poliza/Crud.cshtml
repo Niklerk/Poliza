@@ -1,0 +1,100 @@
+﻿@model Poliza
+@{
+    ViewBag.Title = Model.Id > 0 ? Model.Nombre : "Nuevo registro";
+}
+<h3 class="page-header">@(Model.Id > 0 ? Model.Nombre : "Nuevo registro")</h3>
+@using (Html.BeginForm("Crud", "Poliza", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="btn btn-default">
+        @Html.ActionLink("Volver", "Index")
+    </div>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Nombre, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Nombre, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Nombre, "*", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Descripcion, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Descripcion, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.IdTipoCubrimiento, "Tipo de Cubrimiento", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <select name="IdTipoCubrimiento" class="form-control">
+                <option @(Enums.TipoCubrimiento.Terremoto == Model.IdTipoCubrimiento ? "selected" : "") value="@Enums.TipoCubrimiento.Terremoto">Terremoto</option>
+                <option @(Enums.TipoCubrimiento.Robo == Model.IdTipoCubrimiento ? "selected" : "") value="@Enums.TipoCubrimiento.Robo">Robo</option>
+                <option @(Enums.TipoCubrimiento.Perdida == Model.IdTipoCubrimiento ? "selected" : "") value="@Enums.TipoCubrimiento.Perdida">Perdida</option>
+                <option @(Enums.TipoCubrimiento.Incendio == Model.IdTipoCubrimiento ? "selected" : "") value="@Enums.TipoCubrimiento.Incendio">Incendio</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PorcentajeCobertura, "Porcentaje de cobertura", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input class="form-control" type="number" name="PorcentajeCobertura" value="@(Model.PorcentajeCobertura == 0? 0: Model.PorcentajeCobertura)" />
+            @Html.ValidationMessageFor(model => model.PorcentajeCobertura, "*", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FechaInicio, "Fecha de inicio", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input class="form-control" type="date" name="FechaInicio" value="@(Model.FechaInicio == DateTime.MinValue ? DateTime.Now.ToShortDateString() : Model.FechaInicio.ToShortDateString())" />
+            @Html.ValidationMessageFor(model => model.FechaInicio, "*", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PeriodoMeses, "Periodo de meses", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input class="form-control" type="number" name="PeriodoMeses" value="@(Model.PeriodoMeses == 0? 0: Model.PeriodoMeses)" />
+            @Html.ValidationMessageFor(model => model.PeriodoMeses, "*", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.idTipoRiesgo, "Tipo de riesgo", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <select name="idTipoRiesgo" class="form-control">
+                <option @(Enums.TipoRiesgo.Bajo == Model.idTipoRiesgo ? "selected" : "") value="@Enums.TipoRiesgo.Bajo">Bajo</option>
+                <option @(Enums.TipoRiesgo.Medio == Model.idTipoRiesgo ? "selected" : "") value="@Enums.TipoRiesgo.Medio">Medio</option>
+                <option @(Enums.TipoRiesgo.MedioAlto == Model.idTipoRiesgo ? "selected" : "") value="@Enums.TipoRiesgo.MedioAlto">Medio Alto</option>
+                <option @(Enums.TipoRiesgo.Alto == Model.idTipoRiesgo ? "selected" : "") value="@Enums.TipoRiesgo.Alto">Alto</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PrecioPoliza, "Valor de la poliza", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <input class="form-control" type="text" name="PrecioPoliza" value="@(Model.PrecioPoliza == 0? 0: Model.PrecioPoliza)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.CurrentStatus, "Estado", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <select name="CurrentStatus" class="form-control">
+                <option @(Enums.Status.Enable == Model.CurrentStatus ? "selected" : "") value="@Enums.Status.Enable">Activo</option>
+                <option @(Enums.Status.Disable == Model.CurrentStatus ? "selected" : "") value="@Enums.Status.Disable">Inactivo</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-default" type="submit">
+                Guardar <i class="fa fa-save"></i>
+            </button>
+        </div>
+    </div>
+
+}
